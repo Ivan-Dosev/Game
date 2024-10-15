@@ -1,13 +1,380 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: rgb(33, 33, 33);
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 auto;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h1 {
+    text-align: center;
+    color: aliceblue;
+}
+
+.life-text {
+  color: white;       /* Make the text white */
+  font-family: 'Roboto Mono', monospace;  /* Change the font to your desired font */
+  font-size: 12px;    /* Adjust the font size if needed */
+  font-weight: medium;  /* Optional: bold the text */
+}
+
+.wallet-button-container {
+    position: absolute;
+    top: 5px;    /* 10px from the top of the screen */
+    left: 5px;   /* 10px from the left of the screen */
+    z-index: 1000; /* Ensure the button stays on top */
+}
+
+.ton-connect-button {
+    font-size: 50px; /* Smaller font size */
+    padding: 5px 10px; /* Adjust padding for a smaller button */
+    border-radius: 1px; /* Optional: round the edges */
+    max-width: 15px; /* Limit the width */
+}
+
+@media (max-width: 568px) {
+    /* Responsive for mobile devices */
+    .wallet-button-container .ton-connect-button {
+        font-size: 5px; /* Even smaller on mobile */
+        padding: 4px 8px;
+    }
+}
+
+.ranking-button-container {
+    position: absolute;
+    top: 10px;    /* 10px from the top of the screen */
+    right: 10px;   /* 10px from the left of the screen */
+    z-index: 1000; /* Ensure the button stays on top */
+}
+
+.button-container {
+    display: flex; /* Use flexbox to align items in a row */
+    justify-content: center; /* Center the buttons */
+    margin-top: 20px; /* Space between the timer and the buttons */
+}
+
+.save-button-container,
+.restart-button-container {
+    margin: 0 10px; /* Space between the two buttons */
+    display: flex; /* Ensure the buttons are displayed in a row */
+    align-items: center; /* Vertically center items */
+}
+
+.save-button:hover {
+    background-color: rgb(0, 120, 230); /* Darker blue on hover */
+}
+
+.save-button {
+    background-color: #24A1DE; /* Blue background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px; /* Adjust padding for uniform height */
+    width: 120px; /* Fixed width for uniformity */
+    height: 50px; /* Fixed height for uniformity */
+    font-size: 0.9rem; /* Adjust font size */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Overlay to dim the background */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Modal box */
+.modal-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1001;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Close button */
+.close-button {
+    background-color: #24A1DE;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-family: 'Verdana', sans-serif;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin: 10px 0;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+ul li div {
+    font-size: 15px;
+    font-family: 'Verdana', sans-serif;
+}
+
+/* Add medal spacing */
+ul li div:first-child {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.restart-button {
+    padding: 10px; /* Adjust padding for uniform height */
+    background-color: #24A1DE; /* Green background */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 0.9rem; /* Adjust font size */
+    width: 120px; /* Fixed width for uniformity */
+    height: 50px; /* Fixed height for uniformity */
+}
+
+.restart-button:hover {
+    background-color: rgb(0, 120, 230) /* Darker green on hover */
+}
+
+.ranking-button:hover {
+    background-color: rgb(0, 120, 230); /* Darker blue on hover */
+}
+
+.ranking-button {
+    background-color: #24A1DE;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 10px;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Modal box styling */
+.modal-box {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* src/Components/FooterButtons.css */
+/* src/Components/FooterButtons.css */
+.footer-buttons {
+  position: fixed; /* Fixed position to stay in the bottom right corner */
+  bottom: 20px; /* Space from the bottom */
+  right: 20px; /* Space from the right */
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  gap: 10px; /* Space between buttons */
+}
+
+.twitter-button, .info-button {
+  padding: 10px 15px; /* Padding for buttons */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 14px; /* Font size */
+}
+
+.twitter-button {
+  background-color: #1DA1F2; /* Twitter blue */
+  color: white; /* White text */
+}
+
+.info-button {
+  background-color: #6C757D; /* Grey background */
+  color: white; /* White text */
+}
+
+.twitter-button:hover {
+  background-color: #0d8bf2; /* Darker blue on hover */
+}
+
+.info-button:hover {
+  background-color: #0d8bf2; /* Darker grey on hover */
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Ensure modal is on top */
+}
+
+.modal-box {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 1001; /* Ensure content is above overlay */
+}
+
+.close-button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007BFF; /* Bootstrap primary color */
+  color: white;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+@media (max-width: 768px) {
+    /* Responsive for mobile devices */
+    .ranking-button {
+        font-size: 14px; /* Smaller font size on mobile */
+        padding: 8px 16px; /* Adjust padding for mobile */
+    }
+}
+
+.container {
+    margin: 0 auto;
+    width: 90%;
+    height: 90%;
+    max-width: 18rem;
+    height: 18rem;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: .3rem;
+}
+
+.card {
+    background-color: rgb(0, 140, 255);
+    border-radius: 5px;
+
+    /* Center the emoji horizontally and vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Add padding and animation (if needed) */
+    padding: 10px;
+}
+
+.lives-container {
+  align-items: center; /* Vertically center the emojis */
+  margin-top: 100px; /* Add margin to space it down from the top */
+}
+
+.timer {
+    font-size: 0.5rem; /* Larger font size for better visibility */
+    color: #00FFAB; /* Bright color to make it stand out */
+    text-align: center; /* Center the timer */
+    margin-top: 1rem; /* Space between the timer and the title */
+    padding: 10px;
+    font-family: 'Roboto Mono', monospace; /* Monospace font for the timer */
+    letter-spacing: 0.1rem; /* Add some space between the digits */
+}
+
+.card span {
+    font-size: 28px; /* Make the emoji larger */
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    /* transform: scale(0); */
+    opacity: 0;
+    animation: 2s hideImage linear;
+}
+
+.wallet-connection {
+    text-align: center;
+    margin: 20px 0; /* Space around the wallet connection area */
+}
+
+.card.active {
+    transform: rotateY(0);
+}
+
+.card.active img {
+    opacity: 1;
+}
+
+.unmatch {
+    background-color: rgb(240, 28, 28);
+    border-radius: 5px;
+    animation: 2s hideCard linear;
+}
+
+@keyframes hideCard {
+    0%, 70% {
+        transform: rotateX(0deg);
+    }
+    100% {
+        transform: rotateX(180deg);
+    }
+}
+
+@keyframes hideImage {
+    0%, 84% {
+        opacity: 1;
+    }
+    85% {
+        opacity: 0;
+    }
 }
