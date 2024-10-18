@@ -7,7 +7,7 @@ const FooterButtons = () => {
     const [showModal, setShowModal] = useState(false); // State to control modal visibility
 
     const openTwitter = () => {
-        window.open('https://twitter.com/yourprofile', '_blank'); // Replace with your Twitter profile link
+        window.open('https://twitter.com/', '_blank'); // Replace with your Twitter profile link
     };
 
     const showInfo = () => {
