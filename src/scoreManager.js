@@ -1,14 +1,25 @@
 import axios from 'axios';
 
-export const storePoints = async (wallet, points) => {
+// Request nonce from server
+export const requestNonce = async (wallet) => {
     try {
-        // Make a POST request to the server
+        const response = await axios.post('http://localhost:5001/api/generateNonce', { wallet });
+        const { nonce } = response.data;
+        localStorage.setItem('gameNonce', nonce);  // Store the nonce locally
+    } catch (error) {
+        console.error('Error generating nonce:', error);
+    }
+};
+
+export const storePoints = async (wallet) => {
+    try {
+        const nonce = localStorage.getItem('gameNonce');
         const response = await axios.post('http://localhost:5001/api/savePoints', {
             wallet,
-            points,
+            nonce
         });
-        console.log(response.data.message); // Log the server response
+        console.log('API response:', response.data.message);  // Log the response from backend
     } catch (error) {
-        console.error('Error saving points:', error);
+        console.error('Error saving points:', error);  // Log any error in the API request
     }
 };

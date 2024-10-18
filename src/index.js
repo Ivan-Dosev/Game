@@ -22,7 +22,7 @@ const queryClient = new QueryClient({
 });
 
 // TonConnect manifest URL
-const manifestUrl = 'https://alefmanvladimir.github.io/my-twa/tonconnect-manifest.json';
+const manifestUrl = 'https://github.com/Ivan-Dosev/Game/blob/main/public/manifest.json';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

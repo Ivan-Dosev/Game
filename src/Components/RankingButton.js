@@ -8,13 +8,23 @@ const Rankingbutton = () => {
         try {
             const response = await fetch('http://localhost:5001/api/top10');
             const data = await response.json();
+            console.log('API response:', data); // Check if the data is an array or an object
+            setTopWallets(Array.isArray(data) ? data : []); // Make sure data is an array
+            setIsModalOpen(true);
+        } catch (error) {
+            console.error('Error fetching top 10 results:', error);
+        }
+    };
+    /* const handleConnectWallet = async () => {
+        try {
+            const response = await fetch('http://localhost:5001/api/top10');
+            const data = await response.json();
             setTopWallets(data);
             setIsModalOpen(true); // Open the modal when data is fetched
         } catch (error) {
             console.error('Error fetching top 10 results:', error);
         }
-    };
-
+    }; */
     const handleCloseModal = () => {
         setIsModalOpen(false); // Close the modal when clicked outside or on close
     };
@@ -44,7 +54,7 @@ const Rankingbutton = () => {
                         <h2>Top 10 Rankings</h2>
                         <button className="close-button" onClick={handleCloseModal}>Close</button>
                         <ul>
-                            {topWallets.map(([wallet, points], index) => (
+                            {topWallets.map(({wallet, points}, index) => (
                                 <li key={wallet}>
                                     <div>
                                         {getMedal(index + 1)} {/* Display medal for top 3 */}

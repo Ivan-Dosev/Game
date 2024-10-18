@@ -21,8 +21,6 @@ function App() {
         return savedCount ? parseInt(savedCount, 10) : 0;
     });
 
-    const adContainerRef = useRef(null);
-
     useEffect(() => {
         console.log('State Update:');
         console.log('Timer:', timer);

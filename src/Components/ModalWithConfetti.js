@@ -2,15 +2,24 @@ import React from 'react';
 import Confetti from 'react-confetti';
 import SavePointsButton from './SavePointsButton'; // Import your SavePointsButton component
 import { useWindowSize } from 'react-use'; // To get the full viewport dimensions
+import { requestNonce } from '../scoreManager';
 
 const ModalWithConfetti = ({ wallet, points, isGameFinished, onClose}) => {
     const { width, height } = useWindowSize(); // Get the full viewport size dynamically
-
-    if (!isGameFinished) return null; // Return nothing if the game is not finished
-
+    
     const handleCloseModal = () => {
         onClose(); // Trigger the onClose callback when the modal is closed
     };
+
+    const handleGameFinished = (wallet) => {
+        requestNonce(wallet); 
+    };
+
+    if (!isGameFinished) {
+        return null;
+    } else {
+        handleGameFinished(wallet);
+    }
 
     return (
         <div className="modal-overlay" onClick={handleCloseModal}>

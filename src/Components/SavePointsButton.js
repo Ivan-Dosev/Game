@@ -1,24 +1,29 @@
 import React from 'react';
 import { storePoints } from '../scoreManager'; 
 
-const SavePointsButton = ({ wallet, points, isGameFinished, onSave}) => {
+const SavePointsButton = ({ wallet, isGameFinished, onSave }) => {
 
     const handleSavePoints = () => {
+        console.log('Saving points for wallet:', wallet);  // Debugging wallet
         if (wallet) {
-            storePoints(wallet, points); // Save points to the JSON file
+            console.log('Saving points for wallet:', wallet);  // Debugging wallet
+            storePoints(wallet);  // Save points
             if (onSave) {
                 onSave();
             }
+        } else {
+            console.error('No wallet found');  // Log an error if no wallet is found
         }
     };
 
-    if (wallet && isGameFinished) {
-    return (
-        <button className="save-button" onClick={handleSavePoints} disabled={!wallet}>
-            Save Points
-        </button>
-    );
-   }
+    if ( isGameFinished) {
+        return (
+            <button className="save-button" onClick={handleSavePoints}>
+                Save Points
+            </button>
+        );
+    }
+    return null;
 };
 
 export default SavePointsButton;

@@ -24,28 +24,6 @@
   color: white;
 }
 
-.ranking-button-container {
-  position: absolute;
-  top: 10px;    /* 10px from the top of the screen */
-  right: 10px;   /* 10px from the left of the screen */
-  z-index: 1000; /* Ensure the button stays on top */
-}
-
-.ranking-button {
-  font-size: 16px; /* Adjust the font size */
-  padding: 10px 20px; /* Adjust padding to control button size */
-  max-width: 200px; /* Set a maximum width if needed */
-  border-radius: 8px; /* Optional: round the button's corners */
-}
-
-@media (max-width: 768px) {
-  /* Responsive for mobile devices */
-  .ranking-button {
-    font-size: 14px; /* Smaller font size on mobile */
-    padding: 8px 16px; /* Adjust padding for mobile */
-  }
-}
-
 .App-link {
   color: #61dafb;
 }

@@ -1,6 +1,7 @@
 // src/Components/FooterButtons.js
 import React, { useState } from 'react';
 import InfoModal from './InfoModal'; // Import the InfoModal
+import SavePointsButton from './SavePointsButton';
 
 const FooterButtons = () => {
     const [showModal, setShowModal] = useState(false); // State to control modal visibility
@@ -17,6 +18,8 @@ const FooterButtons = () => {
         setShowModal(false); // Hide the modal
     };
 
+    const wallet = "HELLO";
+
     const rules = [
         '1. Connect your wallet first',
         '2. Get ready to test your memory and speed',
@@ -32,7 +35,7 @@ const FooterButtons = () => {
         <div className="footer-buttons">
             <button className="twitter-button" onClick={openTwitter}>
                 Twitter
-            </button>
+            </button> 
             <button className="info-button" onClick={showInfo}>
                 Info
             </button>
