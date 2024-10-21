@@ -3,7 +3,7 @@ import axios from 'axios';
 // Request nonce from server
 export const requestNonce = async (wallet) => {
     try {
-        const response = await axios.post('http://localhost:5001/api/generateNonce', { wallet });
+        const response = await axios.post('http://server.thedrop.top/api/generateNonce', { wallet });
         const { nonce } = response.data;
         localStorage.setItem('gameNonce', nonce);  // Store the nonce locally
     } catch (error) {
@@ -14,7 +14,7 @@ export const requestNonce = async (wallet) => {
 export const storePoints = async (wallet) => {
     try {
         const nonce = localStorage.getItem('gameNonce');
-        const response = await axios.post('http://localhost:5001/api/savePoints', {
+        const response = await axios.post('http://server.thedrop.top/api/savePoints', {
             wallet,
             nonce
         });

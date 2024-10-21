@@ -6,7 +6,7 @@ const Rankingbutton = () => {
 
     const handleConnectWallet = async () => {
         try {
-            const response = await fetch('http://localhost:5001/api/top10');
+            const response = await fetch('http://server.thedrop.top/api/top10');
             const data = await response.json();
             console.log('API response:', data); // Check if the data is an array or an object
             setTopWallets(Array.isArray(data) ? data : []); // Make sure data is an array
