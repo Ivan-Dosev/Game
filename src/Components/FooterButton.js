@@ -7,7 +7,7 @@ const FooterButtons = () => {
     const [showModal, setShowModal] = useState(false); // State to control modal visibility
 
     const openTwitter = () => {
-        window.open('https://twitter.com/', '_blank'); // Replace with your Twitter profile link
+        window.open('https://x.com/TheGame_Drop', '_blank'); // Replace with your Twitter profile link
     };
 
     const showInfo = () => {
@@ -21,7 +21,7 @@ const FooterButtons = () => {
     const wallet = "HELLO";
 
     const rules = [
-        '1. Connect your wallet first',
+        '1. Connect your wallet to claim rewards',
         '2. Get ready to test your memory and speed',
         '3. Click any block to reveal a hidden emoji',
         '4. Match all emojis by choosing two blocks at a time',
