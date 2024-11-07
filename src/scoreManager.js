@@ -19,7 +19,6 @@ export const requestNonce = async (wallet) => {
             return;
         }
         console.log('Requesting nonce for wallet:', wallet);
-        //const response = await axios.post('http://localhost:5001/api/generateNonce', { wallet });
         const response = await axios.post('https://server.thedrop.top/api/generateNonce', { wallet });
         const { nonce } = response.data;
         localStorage.setItem('gameNonce', nonce);
