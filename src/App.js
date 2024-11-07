@@ -27,7 +27,7 @@ function App() {
         console.log('Is Game Finished:', isGameFinished);
         console.log('Wallet:', wallet);
         console.log('Restart Count:', restartCount);
-        if (isGameFinished && timer < 35000) {
+        if (isGameFinished && timer < 20000) {
             setShowModal(true);
         }
     }, [timer, isGameFinished, wallet]);

@@ -26,7 +26,7 @@ const ModalWithConfetti = ({ wallet, points, isGameFinished, onClose}) => {
             <Confetti width={width} height={height} numberOfPieces={300} /> {/* Confetti over entire screen */}
             <div className="modal-box" onClick={(e) => e.stopPropagation()}> {/* Ensures modal content does not close on click */}
                 <h2>🎉 Congratulations! 🎉</h2>
-                <p>You won 1M 💧 drops for finishing in under 15 seconds!</p>
+                <p>You won 1M 💧 drops for finishing in under 20 seconds!</p>
 
                 {/* Save Points Button */}
                 <SavePointsButton 
